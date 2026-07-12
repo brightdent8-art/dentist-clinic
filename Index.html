@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Dent - عيادة برايت دنت لطب الأسنان</title>
+    <style>
+        :root {
+            --primary: #0D6B7D;
+            --primary-dark: #084C5A;
+            --primary-light: #E6F4F7;
+            --secondary: #1A9CB0;
+            --accent: #D4A843;
+            --accent-light: #F5ECD7;
+            --white: #FFFFFF;
+            --off-white: #F9FAFB;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --gray-900: #0F172A;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.06);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --radius-sm: 8px;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-full: 50%;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-main: 'Tajawal', 'Segoe UI', 'Cairo', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--off-white);
+            color: var(--gray-800);
+            line-height: 1.7;
+            direction: rtl;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .navbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .nav-logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 22px;
+        }
+        .nav-logo-text {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        .nav-logo-text span {
+            color: var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            align-items: center;
+        }
+        .nav-links li a {
+            display: inline-block;
+            padding: 10px 18px;
+            text-decoration: none;
+            color: var(--gray-600);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 25px;
+            transition: var(--transition);
+            cursor: pointer;
+            white-space: nowrap;
+            position: relative;
+        }
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+        .nav-links li a.active {
+            font-weight: 700;
+        }
+        .nav-cta {
+            background: var(--primary) !important;
+            color: var(--white) !important;
+            padding: 10px 22px !important;
+            border-radius: 25px !important;
+            font-weight: 700 !important;
+            transition: var(--transition);
+        }
+        .nav-cta:hover {
+            background: var(--primary-dark) !important;
+            color: var(--white) !important;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--gray-700);
+            padding: 8px;
+        }
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: 72px;
+                right: 0;
+                left: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                gap: 4px;
+                border-bottom: 2px solid var(--gray-200);
+                box-shadow: var(--shadow-lg);
+                transform: translateY(-120%);
+                opacity: 0;
+                pointer-events: none;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+        }
+
+        /* ========== PAGE CONTAINER ========== */
+        .page {
+            display: none;
+            animation: fadeSlideIn 0.45s ease forwards;
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .main-content {
+            flex: 1;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--gray-900);
+            color: var(--gray-300);
+            padding: 48px 24px 24px;
+            margin-top: auto;
+        }
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+        }
+        .footer h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .footer p,
+        .footer a {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            text-decoration: none;
+            line-height: 2;
+        }
+        .footer a:hover {
+            color: var(--accent);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            margin-top: 32px;
+            border-top: 1px solid var(--gray-700);
+            color: var(--gray-500);
+            font-size: 0.85rem;
+        }
+
+        /* ========== HERO SECTION (Home) ========== */
+        .hero {
+            background: linear-gradient(150deg, #F0F9FA 0%, #E8F4F8 40%, #FDFBF5 100%);
+            padding: 60px 24px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: -120px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(13, 107, 125, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 168, 67, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: #8B6914;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        .hero h1 span {
+            color: var(--primary);
+            position: relative;
+        }
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: var(--accent-light);
+            z-index: -1;
+            border-radius: 4px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            font-family: var(--font-main);
+            letter-spacing: 0.3px;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+        }
+        .btn-accent:hover {
+            background: #b89030;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ========== SECTION STYLES ========== */
+        .section {
+            padding: 70px 24px;
+        }
+        .section-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .section-header .label {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+        .section-header p {
+            color: var(--gray-500);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* ========== CARDS ========== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-100);
+            text-align: center;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: transparent;
+        }
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--primary-light);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+        }
+        .card h3 {
+            font-weight: 800;
+            color: var(--gray-800);
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+        }
+        .card p {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* ========== DOCTOR CARDS ========== */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .doctor-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border: 1px solid var(--gray-100);
+            text-align: center;
+        }
+        .doctor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        .doctor-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background: linear-gradient(180deg, #e8f4f8 0%, #d4e8f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: var(--primary);
+            position: relative;
+        }
+        .doctor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .doctor-info {
+            padding: 24px 20px 28px;
+        }
+        .doctor-info h3 {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--gray-900);
+        }
+        .doctor-info .specialty {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .doctor-info .qualification {
+            color: var(--gray-500);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+        .doctor-info p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ========== GALLERY ========== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+        .gallery-item {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: var(--gray-200);
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--gray-400);
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-xl);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ========== APPOINTMENT FORM ========== */
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px 32px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        .form-group {
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-weight: 700;
+            color: var(--gray-700);
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background: var(--gray-50);
+            color: var(--gray-800);
+            width: 100%;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(13, 107, 125, 0.08);
+            background: var(--white);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        .form-success.show {
+            display: block;
+        }
+        .form-success .check-icon {
+            font-size: 64px;
+            color: #22c55e;
+            margin-bottom: 16px;
+        }
+        .form-success h3 {
+            color: var(--gray-800);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        /* ========== CONTACT PAGE ========== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .contact-info-card {
+            background: var(--white);
+            padding: 36px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+        }
+        .contact-info-card h3 {
+            font-weight: 900;
+            color: var(--gray-900);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        .contact-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        .contact-item .icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+        .contact-item .info strong {
+            display: block;
+            color: var(--gray-800);
+            font-weight: 700;
+        }
+        .contact-item .info span {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: var(--gray-200);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--gray-400);
+            margin-top: 16px;
+        }
+        .map-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-xl);
+        }
+
+        /* ========== ABOUT PAGE ========== */
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #fdfbf5 100%);
+            padding: 70px 24px;
+            text-align: center;
+        }
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            line-height: 2;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+        .stat-label {
+            color: var(--gray-500);
+            font-weight: 600;
+        }
+
+        /* ========== UTILITY ========== */
+        .text-center {
+            text-align: center;
+        }
+        .mt-20 {
+            margin-top: 20px;
+        }
+        .mt-40 {
+            margin-top: 40px;
+        }
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section {
+                padding: 40px 16px;
+            }
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+            .form-container {
+                padding: 24px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand" onclick="navigateTo('home')" title="Bright Dent">
+                <div class="nav-logo-icon">🦷</div>
+                <div class="nav-logo-text">Bright<span>Dent</span></div>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="القائمة">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a onclick="navigateTo('home')" data-page="home" class="active">الرئيسية</a></li>
+                <li><a onclick="navigateTo('about')" data-page="about">من نحن</a></li>
+                <li><a onclick="navigateTo('doctors')" data-page="doctors">أطباؤنا</a></li>
+                <li><a onclick="navigateTo('gallery')" data-page="gallery">معرض الصور</a></li>
+                <li><a onclick="navigateTo('contact')" data-page="contact">اتصل بنا</a></li>
+                <li><a onclick="navigateTo('appointment')" data-page="appointment" class="nav-cta">حجز موعد</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <div class="main-content">
+
+        <!-- HOME PAGE -->
+        <div class="page active" id="page-home">
+            <!-- Hero -->
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-badge">✨ عيادة أسنان متكاملة</div>
+                    <h1>ابتسامتك <span>أجمل</span> مع <br>Bright Dent</h1>
+                    <p>نقدم لك رعاية أسنان استثنائية بأحدث التقنيات العالمية على يد نخبة من أمهر الأطباء. صحتك الفموية هي أولويتنا القصوى.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="navigateTo('appointment')">📅 احجز موعدك الآن</button>
+                        <button class="btn btn-outline" onclick="navigateTo('about')">تعرف علينا أكثر</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services -->
+            <section class="section" style="background:var(--white);">
+                <div class="section-container">
+                    <div class="section-header">
+                        <span class="label">خدماتنا</span>
+                        <h2>رعاية أسنان شاملة</h2>
+                        <p>نقدم مجموعة واسعة من الخدمات العلاجية والتجميلية لضمان ابتسامة صحية ومشرقة.</p>
+                    </div>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon">🪥</div>
+                            <h3>تنظيف الأسنان</h3>
+                            <p>إزالة الجير والبلاك للحفاظ على صحة اللثة والأسنان باستخدام أحدث أجهزة التنظيف.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">✨</div>
+                            <h3>تبييض الأسنان</h3>
+                            <p>تقنيات تبييض متطورة تمنحك ابتسامة ناصعة البياض في جلسات آمنة وسريعة.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">🦷</div>
+                            <h3>زراعة الأسنان</h3>
+                            <p>حلول دائمة لتعويض الأسنان المفقودة بزرعات عالية الجودة وتقنيات رقمية دقيقة.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">🔧</div>
+                            <h3>تقويم الأسنان</h3>
+                            <p>تقويم شفاف ومعدني لتصحيح اصطفاف الأسنان والحصول على ابتسامة متناسقة.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">👶</div>
+                            <h3>أسنان الأطفال</h3>
+                            <p>رعاية لطيفة ومتخصصة لأسنان طفلك في بيئة مريحة وآمنة.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">🛡️</div>
+                            <h3>علاج الجذور</h3>
+                            <p>علاج عصب الأسنان بدقة عالية باستخدام أحدث التقنيات لتخفيف الألم وإنقاذ السن.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Clinic Preview (Home page gallery with real images) -->
+            <section class="section" style="background:var(--gray-50);">
+                <div class="section-container">
+                    <div class="section-header">
+                        <span class="label">صور العيادة</span>
+                        <h2>بيئة علاجية مريحة</h2>
+                        <p>عيادتنا مجهزة بأحدث الأجهزة الطبية في جو هادئ ومريح.</p>
+                    </div>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="images/clinic-room.jpg" alt="غرفة العلاج">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/reception.jpg" alt="منطقة الاستقبال">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/sterilization.jpg" alt="غرفة التعقيم">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/waiting-room.jpg" alt="صالة الانتظار">
+                        </div>
+                    </div>
+                    <div class="text-center mt-20">
+                        <button class="btn btn-outline" onclick="navigateTo('gallery')">عرض كل الصور</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div class="page" id="page-about">
+            <section class="about-hero">
+                <div class="section-container">
+                    <div class="section-header">
+                        <span class="label">من نحن</span>
+                        <h2>تعرف على عيادة Bright Dent</h2>
+                    </div>
+                </div>
+            </section>
+            <section class="section" style="background:var(--white);">
+                <div class="about-content section-container">
+                    <p>
+                        تأسست عيادة <strong>Bright Dent</strong> على يد نخبة من أطباء الأسنان المهرة بهدف تقديم رعاية أسنان استثنائية تجمع بين الخبرة العريقة وأحدث التقنيات العالمية.
+                        نؤمن بأن الابتسامة الصحية هي مفتاح الثقة، ولذلك نكرّس كل جهودنا لضمان حصول كل مريض على تجربة علاجية مريحة وآمنة.
+                    </p>
+                    <p>
+                        تضم العيادة فريقًا طبيًا متميزًا بقيادة <strong>د. هيثم فؤاد</strong> و<strong>د. هند فؤاد</strong>، الحاصلين على أعلى المؤهلات العلمية والخبرة العملية الواسعة في مختلف تخصصات طب الأسنان.
+                        نستخدم أحدث الأجهزة والتقنيات الرقمية لضمان تشخيص دقيق وعلاج فعال.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">+8</div>
+                            <div class="stat-label">عامًا من الخبرة</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">+500</div>
+                            <div class="stat-label">مريض سعيد</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">طبيب متخصص</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">رضا العملاء</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- DOCTORS PAGE -->
+        <div class="page" id="page-doctors">
+            <section class="section" style="background:var(--white);">
+                <div class="section-container">
+                    <div class="section-header">
+                        <span class="label">أطباؤنا</span>
+                        <h2>نخبة من أفضل الأطباء</h2>
+                        <p>فريقنا الطبي يجمع بين المهارة العالية والخبرة الواسعة لضمان أفضل رعاية.</p>
+                    </div>
+                    <div class="doctors-grid">
+                        <!-- Dr. Haitham Fouad -->
+                        <div class="doctor-card">
+                            <div class="doctor-img">
+                                <img src="images/dr-haitham.jpg" alt="د. هيثم فؤاد">
+                            </div>
+                            <div class="doctor-info">
+                                <div class="specialty">طبيب أسنان</div>
+                                <h3>د. هيثم فؤاد</h3>
+                                <div class="qualification">بكالوريوس طب وجراحة الفم والأسنان </div>
+                            </div>
+                        </div>
+                        <!-- Dr. Hend Fouad -->
+                        <div class="doctor-card">
+                            <div class="doctor-img">
+                                <img src="images/dr-hend.jpg" alt="د. هند فؤاد">
+                            </div>
+                            <div class="doctor-info">
+                                <div class="specialty">طبيبة أسنان</div>
+                                <h3>د. هند فؤاد</h3>
+                                <div class="qualification">بكالوريوس طب وجراحة الفم والأسنان </div>
+                                <p> تتميز بأسلوبها اللطيف مع الأطفال والكبار، مما يجعل تجربة العلاج مريحة للجميع</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- GALLERY PAGE -->
+        <div class="page" id="page-gallery">
+            <section class="section" style="background:var(--white);">
+                <div class="section-container">
+                    <div class="section-header">
+                        <span class="label">معرض الصور</span>
+                        <h2>جولة داخل عيادتنا</h2>
+                        <p>تعرف على مرافق عيادة Bright Dent الحديثة والمجهزة بأفضل التقنيات.</p>
+                    </div>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="images/clinic-room.jpg" alt="غرفة العلاج الرئيسية">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/waiting-room.jpg" alt="صالة الانتظار الفاخرة">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/reception.jpg" alt="منطقة الاستقبال">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/sterilization.jpg" alt="غرفة التعقيم المركزي">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/chair.jpg" alt="كرسي الفحص الحديث">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/consultation.jpg" alt="مكتب الاستشارات">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/lighting.jpg" alt="إضاءة العلاج المتطورة">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/kids-corner.jpg" alt="ركن الأطفال">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div class="page" id="page-contact">
+            <section class="section" style="background:var(--white);">
+                <div class="section-container">
+                    <div class="section-header">
+                        <span class="label">اتصل بنا</span>
+                        <h2>يسعدنا تواصلك معنا</h2>
+                        <p>نحن هنا للإجابة عن استفساراتك وتقديم أفضل الخدمات.</p>
+                    </div>
+                    <div class="contact-grid">
+                        <div class="contact-info-card">
+                            <h3>📞 معلومات التواصل</h3>
+                            <div class="contact-item">
+                                <div class="icon">📍</div>
+                                <div class="info">
+                                    <strong>العنوان</strong>
+                                    <span>عمارة المهدي أعلى بيتزاوان الدور الثانى - شارع الأسكندرية - مدينة الحمام - مرسى مطروح</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">📞</div>
+                                <div class="info">
+                                    <strong>الهاتف</strong>
+                                    <span>01201044922</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">📱</div>
+                                <div class="info">
+                                    <strong>واتساب</strong>
+                                    <span>01201044922</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">✉️</div>
+                                <div class="info">
+                                    <strong>البريد الإلكتروني</strong>
+                                    <span>hf1011597@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">🕐</div>
+                                <div class="info">
+                                    <strong>ساعات العمل</strong>
+                                    <span>السبت - الخميس: 2:00 ظهرا - 10:00 مساءً<br>الجمعة: مغلق</span>
+                                </div>
+                            </div>
+                            <div class="map-placeholder">
+                                <img src="images/map.jpg" alt="خريطة الموقع">
+                            </div>
+                        </div>
+                        <div class="form-container" style="box-shadow:none;border:1px solid var(--gray-200);">
+                            <h3 style="font-weight:900;color:var(--gray-900);margin-bottom:20px;text-align:center;">أرسل لنا رسالة</h3>
+                            <!-- 👇 تم إضافة name="contact" و netlify وحقل مخفي -->
+                            <form id="contactForm" name="contact" netlify onsubmit="handleContactSubmit(event)">
+                                <input type="hidden" name="form-name" value="contact">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="contactName">الاسم الكامل *</label>
+                                        <input type="text" id="contactName" name="name" placeholder="أدخل اسمك الكامل" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contactEmail">البريد الإلكتروني *</label>
+                                        <input type="email" id="contactEmail" name="email" placeholder="example@email.com" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactSubject">الموضوع</label>
+                                    <input type="text" id="contactSubject" name="subject" placeholder="موضوع الرسالة">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactMessage">الرسالة *</label>
+                                    <textarea id="contactMessage" name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary form-submit">إرسال الرسالة ✉️</button>
+                            </form>
+                            <div class="form-success" id="contactSuccess">
+                                <div class="check-icon">✅</div>
+                                <h3>تم إرسال رسالتك بنجاح!</h3>
+                                <p style="color:var(--gray-500);">سنقوم بالرد عليك في أقرب وقت ممكن. شكرًا لتواصلك معنا.</p>
+                                <button class="btn btn-outline mt-20" onclick="resetContactForm()">إرسال رسالة أخرى</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- APPOINTMENT PAGE -->
+        <div class="page" id="page-appointment">
+            <section class="section" style="background:var(--white);">
+                <div class="section-container">
+                    <div class="section-header">
+                        <span class="label">حجز موعد</span>
+                        <h2>احجز موعدك بسهولة</h2>
+                        <p>املأ النموذج التالي وسنتواصل معك لتأكيد الموعد في أقرب وقت.</p>
+                    </div>
+                    <div class="form-container">
+                        <!-- 👇 تم إضافة name="appointment" و netlify وحقل مخفي -->
+                        <form id="appointmentForm" name="appointment" netlify onsubmit="handleAppointmentSubmit(event)">
+                            <input type="hidden" name="form-name" value="appointment">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="apptName">الاسم الكامل *</label>
+                                    <input type="text" id="apptName" name="name" placeholder="أدخل اسمك الكامل" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apptPhone">رقم الهاتف *</label>
+                                    <input type="tel" id="apptPhone" name="phone" placeholder="05xxxxxxxx" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="apptEmail">البريد الإلكتروني</label>
+                                    <input type="email" id="apptEmail" name="email" placeholder="example@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="apptDate">التاريخ المفضل *</label>
+                                    <input type="date" id="apptDate" name="date" required min="">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="apptTime">الوقت المفضل *</label>
+                                    <select id="apptTime" name="time" required>
+                                        <option value="">اختر الوقت</option>
+                                        <option value="14:00-15:00">2:00 - 3:00 ظهرًا</option>
+                                        <option value="15:00-16:00">3:00 - 4:00 ظهرًا</option>
+                                        <option value="16:00-17:00">4:00 - 5:00 مساءً</option>
+                                        <option value="17:00-18:00">5:00 - 6:00 مساءً</option>
+                                        <option value="18:00-19:00">6:00 - 7:00 مساءً</option>
+                                        <option value="19:00-20:00">7:00 - 8:00 مساءً</option>
+                                        <option value="20:00-21:00">9:00 - 10:00 مساءً </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apptDoctor">الطبيب المفضل</label>
+                                    <select id="apptDoctor" name="doctor">
+                                        <option value="">لا يوجد تفضيل</option>
+                                        <option value="dr-haitham">د. هيثم فؤاد</option>
+                                        <option value="dr-hend">د. هند فؤاد</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="apptService">الخدمة المطلوبة *</label>
+                                <select id="apptService" name="service" required>
+                                    <option value="">اختر الخدمة</option>
+                                    <option value="cleaning">تنظيف الأسنان</option>
+                                    <option value="whitening">تبييض الأسنان</option>
+                                    <option value="implant">زراعة الأسنان</option>
+                                    <option value="orthodontics">تقويم الأسنان</option>
+                                    <option value="root-canal">علاج الجذور</option>
+                                    <option value="pediatric">أسنان الأطفال</option>
+                                    <option value="checkup">تركيبات ثابتة ومتحركه</option>
+                                    <option value="extraction">خلع الأسنان </option>
+                                    <option value="filling">حشوات عادية وتجميليه</option>
+                                    <option value="checkup">فحص عام</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="apptNotes">ملاحظات إضافية</label>
+                                <textarea id="apptNotes" name="notes" placeholder="أي معلومات إضافية تود إخبارنا بها..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-accent form-submit">📅 تأكيد حجز الموعد</button>
+                        </form>
+                        <div class="form-success" id="appointmentSuccess">
+                            <div class="check-icon">🎉</div>
+                            <h3>تم استلام طلب الحجز بنجاح!</h3>
+                            <p style="color:var(--gray-500);">سنتواصل معك قريبًا عبر الهاتف لتأكيد الموعد. شكرًا لاختيارك <strong>Bright Dent</strong>.</p>
+                            <button class="btn btn-outline mt-20" onclick="resetAppointmentForm()">حجز موعد آخر</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <h4>🦷 Bright Dent</h4>
+                <p>عيادة أسنان متكاملة تقدم أفضل الخدمات العلاجية والتجميلية بأحدث التقنيات العالمية.</p>
+            </div>
+            <div>
+                <h4>روابط سريعة</h4>
+                <a onclick="navigateTo('home')" style="cursor:pointer;">الرئيسية</a><br>
+                <a onclick="navigateTo('about')" style="cursor:pointer;">من نحن</a><br>
+                <a onclick="navigateTo('doctors')" style="cursor:pointer;">أطباؤنا</a><br>
+                <a onclick="navigateTo('gallery')" style="cursor:pointer;">معرض الصور</a><br>
+                <a onclick="navigateTo('appointment')" style="cursor:pointer;">حجز موعد</a>
+            </div>
+            <div>
+                <h4>تواصل معنا</h4>
+                <p>📞 01201044922</p>
+                <p>📱 01201044922</p>
+                <p>✉️ hf1011597@gmail.com</p>
+            </div>
+            <div>
+                <h4>ساعات العمل</h4>
+                <p>السبت - الخميس</p>
+                <p>2:00م - 9:00 م</p>
+                <p>الجمعة: مغلق</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026  MOHAMED SALEH جميع الحقوق محفوظة. صُمم بواسطة </p>
+        </div>
+    </footer>
+
+    <script>
+        // ============ NAVIGATION SYSTEM ============
+        function navigateTo(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            // Show target page
+            const target = document.getElementById('page-' + pageName);
+            if (target) {
+                target.classList.add('active');
+                // Force re-animation
+                target.style.animation = 'none';
+                target.offsetHeight;
+                target.style.animation = 'fadeSlideIn 0.45s ease forwards';
+            }
+            // Update nav active state
+            document.querySelectorAll('.nav-links li a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageName) {
+                    link.classList.add('active');
+                }
+            });
+            // Close mobile menu
+            document.getElementById('navLinks').classList.remove('open');
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Update URL hash
+            window.location.hash = pageName;
+        }
+
+        // Mobile toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+            this.textContent = document.getElementById('navLinks').classList.contains('open') ? '✕' : '☰';
+        });
+
+        // Navbar shadow on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Set min date for appointment to today
+        const today = new Date().toISOString().split('T')[0];
+        const dateInput = document.getElementById('apptDate');
+        if (dateInput) {
+            dateInput.setAttribute('min', today);
+            dateInput.value = today;
+        }
+
+        // ============ APPOINTMENT FORM HANDLER ============
+        function handleAppointmentSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+
+            // إرسال البيانات إلى Netlify Forms
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // إظهار رسالة النجاح
+                form.style.display = 'none';
+                document.getElementById('appointmentSuccess').classList.add('show');
+                window.scrollTo({ top: document.getElementById('appointmentSuccess').offsetTop - 100, behavior: 'smooth' });
+            })
+            .catch(error => {
+                alert('حدث خطأ في الإرسال، حاول مرة أخرى لاحقًا');
+                console.error(error);
+            });
+        }
+
+        function resetAppointmentForm() {
+            document.getElementById('appointmentForm').style.display = 'block';
+            document.getElementById('appointmentSuccess').classList.remove('show');
+            document.getElementById('appointmentForm').reset();
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('apptDate').value = today;
+            window.scrollTo({ top: document.getElementById('page-appointment').offsetTop - 80, behavior: 'smooth' });
+        }
+
+        // ============ CONTACT FORM HANDLER ============
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+
+            // إرسال البيانات إلى Netlify Forms
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // إظهار رسالة النجاح
+                form.style.display = 'none';
+                document.getElementById('contactSuccess').classList.add('show');
+                window.scrollTo({ top: document.getElementById('contactSuccess').offsetTop - 100, behavior: 'smooth' });
+            })
+            .catch(error => {
+                alert('حدث خطأ في الإرسال، حاول مرة أخرى لاحقًا');
+                console.error(error);
+            });
+        }
+
+        function resetContactForm() {
+            document.getElementById('contactForm').style.display = 'block';
+            document.getElementById('contactSuccess').classList.remove('show');
+            document.getElementById('contactForm').reset();
+            window.scrollTo({ top: document.getElementById('page-contact').offsetTop - 80, behavior: 'smooth' });
+        }
+
+        // ============ HANDLE INITIAL HASH ============
+        function handleHashChange() {
+            const hash = window.location.hash.replace('#', '');
+            const validPages = ['home', 'about', 'doctors', 'gallery', 'contact', 'appointment'];
+            if (validPages.includes(hash)) {
+                navigateTo(hash);
+            }
+        }
+        window.addEventListener('hashchange', handleHashChange);
+        // On load
+        handleHashChange();
+        if (!window.location.hash || window.location.hash === '#') {
+            navigateTo('home');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navLinks = document.getElementById('navLinks');
+            const toggle = document.getElementById('mobileToggle');
+            if (!navLinks.contains(e.target) && !toggle.contains(e.target) && navLinks.classList.contains('open')) {
+                navLinks.classList.remove('open');
+                toggle.textContent = '☰';
+            }
+        });
+    </script>
+</body>
+</html>
