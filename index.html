@@ -1046,9 +1046,7 @@
                         </div>
                         <div class="form-container" style="box-shadow:none;border:1px solid var(--gray-200);">
                             <h3 style="font-weight:900;color:var(--gray-900);margin-bottom:20px;text-align:center;">أرسل لنا رسالة</h3>
-                            <!-- 👇 تم إضافة name="contact" و netlify وحقل مخفي -->
-                            <form id="contactForm" action="https://formspree.io/f/xpqvzlpp">
-                                <input type="hidden" name="form-name" value="contact">
+                            <form id="contactForm" action="https://formspree.io/f/xpqvzlpp" method="POST">
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="contactName">الاسم الكامل *</label>
@@ -1091,9 +1089,7 @@
                         <p>املأ النموذج التالي وسنتواصل معك لتأكيد الموعد في أقرب وقت.</p>
                     </div>
                     <div class="form-container">
-                        <!-- 👇 تم إضافة name="appointment" و netlify وحقل مخفي -->
-                        <form id="appointmentForm" action="https://formspree.io/f/mjgnvoej">
-                            <input type="hidden" name="form-name" value="appointment">
+                        <form id="appointmentForm" action="https://formspree.io/f/mjgnvoej" method="POST">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="apptName">الاسم الكامل *</label>
@@ -1209,39 +1205,30 @@
     <script>
         // ============ NAVIGATION SYSTEM ============
         function navigateTo(pageName) {
-            // Hide all pages
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            // Show target page
             const target = document.getElementById('page-' + pageName);
             if (target) {
                 target.classList.add('active');
-                // Force re-animation
                 target.style.animation = 'none';
                 target.offsetHeight;
                 target.style.animation = 'fadeSlideIn 0.45s ease forwards';
             }
-            // Update nav active state
             document.querySelectorAll('.nav-links li a').forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('data-page') === pageName) {
                     link.classList.add('active');
                 }
             });
-            // Close mobile menu
             document.getElementById('navLinks').classList.remove('open');
-            // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            // Update URL hash
             window.location.hash = pageName;
         }
 
-        // Mobile toggle
         document.getElementById('mobileToggle').addEventListener('click', function() {
             document.getElementById('navLinks').classList.toggle('open');
             this.textContent = document.getElementById('navLinks').classList.contains('open') ? '✕' : '☰';
         });
 
-        // Navbar shadow on scroll
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 10) {
@@ -1251,36 +1238,11 @@
             }
         });
 
-        // Set min date for appointment to today
         const today = new Date().toISOString().split('T')[0];
         const dateInput = document.getElementById('apptDate');
         if (dateInput) {
             dateInput.setAttribute('min', today);
             dateInput.value = today;
-        }
-
-        // ============ APPOINTMENT FORM HANDLER ============
-        function handleAppointmentSubmit(event) {
-           // event.preventDefault();
-            const form = event.target;
-            const formData = new FormData(form);
-
-            // إرسال البيانات إلى Netlify Forms
-            fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
-            })
-            .then(() => {
-                // إظهار رسالة النجاح
-                form.style.display = 'none';
-                document.getElementById('appointmentSuccess').classList.add('show');
-                window.scrollTo({ top: document.getElementById('appointmentSuccess').offsetTop - 100, behavior: 'smooth' });
-            })
-            .catch(error => {
-                alert('حدث خطأ في الإرسال، حاول مرة أخرى لاحقًا');
-                console.error(error);
-            });
         }
 
         function resetAppointmentForm() {
@@ -1292,30 +1254,6 @@
             window.scrollTo({ top: document.getElementById('page-appointment').offsetTop - 80, behavior: 'smooth' });
         }
 
-        // ============ CONTACT FORM HANDLER ============
-        function handleContactSubmit(event) {
-           // event.preventDefault();
-            const form = event.target;
-            const formData = new FormData(form);
-
-            // إرسال البيانات إلى Netlify Forms
-            fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
-            })
-            .then(() => {
-                // إظهار رسالة النجاح
-                form.style.display = 'none';
-                document.getElementById('contactSuccess').classList.add('show');
-                window.scrollTo({ top: document.getElementById('contactSuccess').offsetTop - 100, behavior: 'smooth' });
-            })
-            .catch(error => {
-                alert('حدث خطأ في الإرسال، حاول مرة أخرى لاحقًا');
-                console.error(error);
-            });
-        }
-
         function resetContactForm() {
             document.getElementById('contactForm').style.display = 'block';
             document.getElementById('contactSuccess').classList.remove('show');
@@ -1323,7 +1261,6 @@
             window.scrollTo({ top: document.getElementById('page-contact').offsetTop - 80, behavior: 'smooth' });
         }
 
-        // ============ HANDLE INITIAL HASH ============
         function handleHashChange() {
             const hash = window.location.hash.replace('#', '');
             const validPages = ['home', 'about', 'doctors', 'gallery', 'contact', 'appointment'];
@@ -1332,13 +1269,11 @@
             }
         }
         window.addEventListener('hashchange', handleHashChange);
-        // On load
         handleHashChange();
         if (!window.location.hash || window.location.hash === '#') {
             navigateTo('home');
         }
 
-        // Close mobile menu when clicking outside
         document.addEventListener('click', function(e) {
             const navLinks = document.getElementById('navLinks');
             const toggle = document.getElementById('mobileToggle');
