@@ -1047,7 +1047,7 @@
                         <div class="form-container" style="box-shadow:none;border:1px solid var(--gray-200);">
                             <h3 style="font-weight:900;color:var(--gray-900);margin-bottom:20px;text-align:center;">أرسل لنا رسالة</h3>
                             <!-- 👇 تم إضافة name="contact" و netlify وحقل مخفي -->
-                            <form id="contactForm" name="contact" netlify onsubmit="handleContactSubmit(event)">
+                            <form id="contactForm" action="https://formspree.io/f/xpqvzlpp">
                                 <input type="hidden" name="form-name" value="contact">
                                 <div class="form-row">
                                     <div class="form-group">
@@ -1092,7 +1092,7 @@
                     </div>
                     <div class="form-container">
                         <!-- 👇 تم إضافة name="appointment" و netlify وحقل مخفي -->
-                        <form id="appointmentForm" name="appointment" netlify onsubmit="handleAppointmentSubmit(event)">
+                        <form id="appointmentForm" action="https://formspree.io/f/mjgnvoej">
                             <input type="hidden" name="form-name" value="appointment">
                             <div class="form-row">
                                 <div class="form-group">
@@ -1261,7 +1261,7 @@
 
         // ============ APPOINTMENT FORM HANDLER ============
         function handleAppointmentSubmit(event) {
-            event.preventDefault();
+           // event.preventDefault();
             const form = event.target;
             const formData = new FormData(form);
 
@@ -1294,7 +1294,7 @@
 
         // ============ CONTACT FORM HANDLER ============
         function handleContactSubmit(event) {
-            event.preventDefault();
+           // event.preventDefault();
             const form = event.target;
             const formData = new FormData(form);
 
